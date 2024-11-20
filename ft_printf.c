@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:02:21 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/20 17:51:35 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:53:56 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int ft_printf(const char *print, ...)
 	return ();
 	}
 
-int	main(void)
-{
-	const char [50] = "%d \n", ft_isalpha(h);
-	ft_printf("Hello %s, number is %d\n", "World", 42); //test
-	ft_printf();
-	return (0);
-}
+// int	main(void)
+// {
+// 	const char [50] = "%d \n", ft_isalpha(h);
+// 	ft_printf("Hello %s, number is %d\n", "World", 42); //test
+// 	ft_printf();
+// 	return (0);
+// }
