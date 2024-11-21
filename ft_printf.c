@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:02:21 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/21 17:43:19 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:54:17 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int ft_printf(const char *print, ...)
 	unsigned int	un;
 	unsigned int	x;
 	unsigned int	xx;
-	
 
 	i = 0;
 	while (print[i] != '\0') // or *print to dereference and print++ to increment through characters
