@@ -6,12 +6,13 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:02:21 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/20 17:53:56 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:43:19 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include "ft_printf.h"
 
 int ft_printf(const char *print, ...)
 {
@@ -22,10 +23,9 @@ int ft_printf(const char *print, ...)
 	size_t	i;
 	char	c;
 	char	*s;
-	void	*ptr;
+	void	*p;
 	int	n;
-	int	in;
-	unsigned int	u;
+	unsigned int	un;
 	unsigned int	x;
 	unsigned int	xx;
 	
@@ -37,33 +37,43 @@ int ft_printf(const char *print, ...)
 		{
 			i++;
 			if (print[i] == 'c')
-			char c = (char)va_arg(args, int); //promote to int but cast back to char
-			ft_putchar(c);
-											// va_arg to move to next variable argument
-											//stop alles behalve %c in functie?
+			{
+				c = (char)va_arg(args, int); //promote to int but cast back to char
+				ft_putchar(c);
+			}								// va_arg to move to next variable argument
+											//stop alles behalve %c in functie
 			else if (print[i] == 's')
-			char	*s = va_arg(args, char *);
-			function(s);
+			{
+				s = va_arg(args, char *);
+				ft_putstr(s);
+			}
 			else if (print[i] == 'p')
-			void	*ptr = va_arg(args, void *);
-			function(ptr);
-			else if (print[i] == 'd')
-			int	n = va_arg(args, int);
-			function
-			else if (print[i] == 'i')
-			int	in = va_arg(args, int);
-			function
+			{
+				p = va_arg(args, void *);
+				ft_putadress(p);
+			}
+			else if ((print[i] == 'd') && (print[i] == 'i'))
+			{
+				n = va_arg(args, int);
+				ft_putnbr_signed(n);
+			}
 			else if (print[i] == 'u')
-			unsigned int	u = va_arg(args, unsigned int);
-			function
+			{
+				un = va_arg(args, unsigned int);
+				ft_putnbr_unsigned(un);
+			}
 			else if (print[i] == 'x')
-			unsigned int	x = va_arg(args, unsigned int);
-			function
+			{
+				x = va_arg(args, unsigned int);
+				ft_puthexa_low(x);
+			}
 			else if (print[i] == 'X')
-			unsigned int	xx = va_arg(args, unsigned int);
-			function
+			{
+				xx = va_arg(args, unsigned int);
+				ft_puthexa_up(xx);
+			}
 			else if (print[i] == '%')
-			function
+				write(1, &print[i], 1);
 		}
 		else
 		while (print[i] != '\0')

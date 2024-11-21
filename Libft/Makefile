@@ -43,7 +43,7 @@ all : $(NAME)
 $(NAME): $(OBJFILES)
 	ar -rcs $(NAME) $(OBJFILES)
 
-%.o: %.c
+%.o: %.c 
 	cc $(CFLAGS) $^
 
 clean:

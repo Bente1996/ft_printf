@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 14:22:40 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/21 17:09:15 by bde-koni         ###   ########.fr       */
+/*   Created: 2024/11/21 11:45:49 by bde-koni          #+#    #+#             */
+/*   Updated: 2024/11/21 16:29:30 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-//#include <stdio.h>
-//#include "libft.h"
+void ft_putstr(char *s) 
+{
+	size_t i;
+	
+	i = 0;
+	while ((s != NULL) && (s[i] != '\0'))
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	write(1, s, i);
+}
 
-int		ft_printf(const char *, ...);
-void	ft_putchar(char	c);
-void	ft_putstr(char *s);
-void	ft_putnbr_signed(int n);
-void	ft_putnbr_unsigned(int un);
-void	ft_putadress(void *p);
-void	ft_puthexa_low(unsigned int x);
-void	ft_puthexa_low(unsigned int xx);
+int	main(void)
+{
+	return (0);
+}
 
-#endif
