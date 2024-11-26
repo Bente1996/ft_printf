@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:58:56 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/21 17:20:00 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:23:53 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,3 @@ void ft_putnbr_unsigned(int un)
 	ft_putchar((un % 10) + '0');
 }
 
-int	main(void)
-{
-	return (0);
-}
