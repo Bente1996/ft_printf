@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 16:06:09 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/26 16:13:39 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:39:19 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ void	ft_puthexa_up(unsigned int xx)
 {
 	if (xx >= 16)
 		ft_puthexa_up(xx / 16);
-	ft_putchar("0123456789ABCDEf"[xx % 16]);
+	ft_putchar("0123456789ABCDEF"[xx % 16]);
 }
-

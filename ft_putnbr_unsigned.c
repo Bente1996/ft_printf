@@ -6,16 +6,15 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:58:56 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/22 18:23:53 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:21:52 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putnbr_unsigned(int un)
+void	ft_putnbr_unsigned(unsigned int u)
 {
-	if (un >= 10)
-		ft_putnbr_unsigned(un / 10);
-	ft_putchar((un % 10) + '0');
+	if (u >= 10)
+		ft_putnbr_unsigned(u / 10);
+	ft_putchar((u % 10) + '0');
 }
-

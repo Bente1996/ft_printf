@@ -6,13 +6,13 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:40:22 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/22 18:27:39 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:54:27 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }

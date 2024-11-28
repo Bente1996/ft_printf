@@ -6,18 +6,18 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:15:57 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/26 15:06:59 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:01:24 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putnbr_signed(int n)
+void	ft_putnbr_signed(int n)
 {
 	long	n2;
-	
+
 	n2 = (long)n;
-	if (n2 < 0) 
+	if (n2 < 0)
 	{
 		ft_putchar('-');
 		n2 *= -1;

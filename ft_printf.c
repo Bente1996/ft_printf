@@ -6,13 +6,15 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:02:21 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/26 18:32:02 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:36:33 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 #include "ft_printf.h"
+#include <stdint.h>
+#include <aio.h>
 
 int ft_printf(const char *print, ...)
 {
@@ -25,7 +27,7 @@ int ft_printf(const char *print, ...)
 	char	*s;
 	void	*p;
 	int	n;
-	unsigned int	un;
+	unsigned int	u;
 	unsigned int	x;
 	unsigned int	xx;
 	size_t	count;
@@ -47,41 +49,67 @@ int ft_printf(const char *print, ...)
 			else if (print[i] == 's')
 			{
 				s = va_arg(args, char *);
-				ft_putstr(s);
-				count += ft_strlen(s);
+				if (s == NULL)
+					{
+						ft_putstr("(null)");
+						count += 6;
+					}
+				else 
+				{	
+					ft_putstr(s);
+					count += ft_strlen(s);
+				}
 			}
 			else if (print[i] == 'p')
 			{
 				p = va_arg(args, void *);
-				ft_putaddress(p);
-				count += 2;
-				count += ft_strlen(p);
+				if (p == NULL)
+				{
+					ft_putstr("(nil)");
+					count += 5;
+				}
+				else
+				{
+					ft_putaddress(p);
+					count += 2;
+					count += ft_hexalen((uintptr_t)p);
+				}
 			}
 			else if ((print[i] == 'd') || (print[i] == 'i'))
 			{
 				n = va_arg(args, int);
 				ft_putnbr_signed(n);
-				count += ft_lencheck((long)n);
-				if (n < 0)
-					count++;
+				if (n == 0)
+					count += 1;
+				else 
+					count += ft_lencheck((long)n);
 			}
 			else if (print[i] == 'u')
 			{
-				un = va_arg(args, unsigned int);
-				ft_putnbr_unsigned(un);
-				count += ft_lencheck((long)un);
+				u = va_arg(args, unsigned int);
+				ft_putnbr_unsigned(u);
+				if (u == 0)
+					count += 1;
+				else 
+					count += ft_lencheck((long)u);
 			}
 			else if (print[i] == 'x')
 			{
 				x = va_arg(args, unsigned int);
 				ft_puthexa_low(x);
-				count += ft_hexalen(x);
+				if (x == 0)
+					count += 1;
+				else 
+					count += ft_hexalen(x);
 			}
 			else if (print[i] == 'X')
 			{
 				xx = va_arg(args, unsigned int);
 				ft_puthexa_up(xx);
-				count += ft_hexalen(xx);
+				if (xx == 0)
+					count += 1;
+				else 
+					count += ft_hexalen(xx);
 			}
 			else if (print[i] == '%')
 			{
@@ -100,34 +128,15 @@ int ft_printf(const char *print, ...)
 	return (count);
 }
 
-size_t	ft_hexalen(unsigned x)
+size_t	ft_hexalen(uintptr_t x)
 {
 	size_t	len;
 
 	len = 0;
-	if (x < 0)
-	{
-		x *= -1;
-		len++;
-	}
 	while (x > 0)
 	{
 		x /= 16;
 		len++;
 	}
 	return (len);
-}
-
-int	main(void)
-{
-	char	s[50] = "dit is een string";
-	unsigned int xx = 555555555;
-	
-
-	ft_printf("%s tussenstukje %X \n", s, xx);
-	printf("%s tussenstukje %X \n", s, xx);
-
-	printf("%d \n", printf("%d", xx));
-	printf("%d \n", ft_printf("%d", xx));
-	return (0);
 }

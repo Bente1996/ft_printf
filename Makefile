@@ -1,7 +1,7 @@
-# NAME := libftprintf.a
-NAME := printf
-HEADERFILES := libft.h \
-ft_printf.h
+# NAME := libftprintf.a, eerst printf
+NAME := libftprintf.a
+EXEC_NAME := ft_printf
+HEADERFILES := libft.h ft_printf.h
 SRCFILES := ft_printf.c \
 ft_putchar.c \
 ft_putstr.c \
@@ -14,60 +14,33 @@ ft_puthexa_up.c \
 
 
 OBJFILES := $(SRCFILES:.c=.o)
-CFLAGS ?= -Wall -Wextra -Werror -c
+CFLAGS ?= -Wall -Wextra -Werror -ILibft/
 LIBFT_A := Libft/libft.a
-LIBFTSRCFILES := ft_isalpha.c \
-ft_isdigit.c \
-ft_isalnum.c \
-ft_isascii.c \
-ft_isprint.c \
-ft_strlen.c \
-ft_memset.c \
-ft_bzero.c \
-ft_memcpy.c \
-ft_memmove.c \
-ft_strlcpy.c \
-ft_strlcat.c \
-ft_toupper.c \
-ft_tolower.c \
-ft_strchr.c \
-ft_strrchr.c \
-ft_strncmp.c \
-ft_memchr.c \
-ft_memcmp.c \
-ft_strnstr.c \
-ft_atoi.c \
-ft_calloc.c \
-ft_strdup.c \
-ft_substr.c \
-ft_strjoin.c \
-ft_strtrim.c \
-ft_split.c \
-ft_itoa.c \
-ft_strmapi.c \
-ft_striteri.c \
-ft_putchar_fd.c \
-ft_putstr_fd.c \
-ft_putendl_fd.c \
-ft_putnbr_fd.c
 
 all : $(NAME)
 
-run: $(NAME)
-	./$(NAME)
+run: $(NAME) $(EXEC_NAME)
+	./$(EXEC_NAME)
 
-$(NAME): $(LIBFT_A) $(OBJFILES)
-	cc $(OBJFILES) $(LIBFT_A) -ILibft/ -o $(NAME)
-# ar -rcs $(NAME) $(OBJFILES)
-
-$(LIBFT_A): $(LIBFTSRCFILES)
-	$(MAKE) -C Libft
-
-$(LIBFTSRCFILES) : ;
+# Create the library
+# $(NAME): $(OBJFILES) $(LIBFT_A)
+# 	ar -rcs $(NAME) $(OBJFILES) $(LIBFT_A)
 
 
+$(NAME): $(OBJFILES) $(LIBFT_A)
+	cp $(LIBFT_A) $(NAME)
+	ar -cr $(NAME) $(OBJFILES)
+
+$(EXEC_NAME): $(NAME) main.c
+	$(CC) main.c -L./ -lftprintf $(CFLAGS) -o $(EXEC_NAME)
+
+# Object file rule
 %.o: %.c $(HEADERFILES)
-	cc $(CFLAGS) $< -ILibft/
+	cc $(CFLAGS) -c $<
+
+# Build Libft library
+$(LIBFT_A):
+	$(MAKE) -C Libft
 
 clean:
 	rm -f $(OBJFILES)
