@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:20:42 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/29 14:55:51 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:33:47 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int	main(void)
 	// ft_printf(" %u ", -1);
 	// printf(" %u ", -1);
 
-	ft_printf("%k", 2);
+	//ft_printf("%k", 2);
 	//printf("%k", 2);
+
+	//ft_printf("% %%% %k hallo %");
+	printf("% %%% % hallo %");
 	return (0);
 }

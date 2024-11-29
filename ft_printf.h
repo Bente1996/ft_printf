@@ -6,14 +6,14 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 14:22:40 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/29 14:46:11 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:14:52 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "libft.h"
+# include "libft.h"
 
 int		ft_printf(const char *print, ...);
 size_t	handle_print(char flag, va_list args);

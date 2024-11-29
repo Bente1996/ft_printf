@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:05:14 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/29 14:37:29 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:22:27 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 size_t	handle_signed(int n)
 {
-	va_list args;
 	size_t	count;
 
 	count = 0;
-	n = va_arg(args, int);
 	ft_putnbr_signed(n);
 	if (n == 0)
-	count += 1;
-	else 
+		count += 1;
+	else
 		count += ft_lencheck((long)n);
 	return (count);
 }

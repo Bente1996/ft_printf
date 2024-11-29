@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:02:21 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/29 14:58:07 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:04:11 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,43 +18,44 @@ int	ft_printf(const char *print, ...)
 	size_t	i;
 	size_t	count;
 
-	va_start(args, print); //declare va_start variable: va_list variable + last named argument before variable argumsents
+	va_start(args, print);
 	i = 0;
 	count = 0;
 	while (print[i] != '\0')
 	{
 		if ((print[i] == '%') && (print[i + 1] != '\0'))
 		{
-			i++; //move to possible flag, don't print %
-			count += handle_print(print[i], args); // result of handle_print at possible flag += count
+			i++;
+			count += handle_print(print[i], args);
 		}
 		else
-			count += write(1, &print[i], 1); // no %? print directly, count++;
-		i++; //move to next character
+			count += write(1, &print[i], 1);
+		i++;
 	}
-	va_end(args); //ends list and cleans things up
+	va_end(args);
 	return (count);
 }
 
-size_t	handle_print(char is_flag, va_list args) //keeps track of count and puts on output, takes a char and va _list argument
+size_t	handle_print(char is_flag, va_list args)
 {
 	if (is_flag == 'c')
-		return (handle_char(va_arg(args, int))); //function handles c and returns count
+		return (handle_char(va_arg(args, int)));
 	else if (is_flag == 's')
-		return (handle_string(va_arg(args, char *))); //function handles s and returns count
+		return (handle_string(va_arg(args, char *)));
 	else if (is_flag == 'p')
-		return (handle_pointer(va_arg(args, void *))); //function handles p and returns count
+		return (handle_pointer(va_arg(args, void *)));
 	else if ((is_flag == 'd') || (is_flag == 'i'))
-		return (handle_signed(va_arg(args, int))); //function handles d and i and returs count
+		return (handle_signed(va_arg(args, int)));
 	else if (is_flag == 'u')
-		return (handle_unsigned(va_arg(args, unsigned int))); //function handles u and returns count
+		return (handle_unsigned(va_arg(args, unsigned int)));
 	else if (is_flag == 'x')
-		return (handle_hexa_low(va_arg(args, unsigned int))); //function handles x and returns count
+		return (handle_hexa_low(va_arg(args, unsigned int)));
 	else if (is_flag == 'X')
-		return (handle_hexa_up(va_arg(args, unsigned int))); //function handles X and returns count
+		return (handle_hexa_up(va_arg(args, unsigned int)));
 	else if (is_flag == '%')
-		return (write(1, "%", 1)); //write handles % and returns 1
-	return (0); //no flag after %? return 0, QUESTION: does '%@' needs to be printed?
+		return (write(1, "%", 1));
+	else
+	return (0);
 }
 
 size_t	ft_hexalen(uintptr_t x)
