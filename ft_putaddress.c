@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:03:58 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/27 15:35:02 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:45:09 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 void	ft_puthexa_ptr(uintptr_t x)
 {
-	if (x >= 16) //If the number has more than one digit in hexadecimal, divide it by 16 to isolate and process the more significant digits first.
-		ft_puthexa_ptr(x / 16); //make room for numbers, break into pieces
-	ft_putchar("0123456789abcdef"[x % 16]); //every division leftover gets printed according to hexadecimal base
+	if (x >= 16)
+		ft_puthexa_ptr(x / 16);
+	ft_putchar("0123456789abcdef"[x % 16]);
 }
 
 void	ft_putaddress(void *p)
@@ -31,23 +31,6 @@ void	ft_putaddress(void *p)
 	ft_putstr("0x");
 	ft_puthexa_ptr(ptr);
 }
-
-// void	ft_putchar(char c)
-// {
-// 	write(1, &c, 1);
-// }
-
-// void	ft_putstr(char *s)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (s[i] != '\0')
-// 	{
-// 		write(1, &s[i], 1);
-// 		i++;
-// 	}
-// }
 
 // int	main(void)
 // {

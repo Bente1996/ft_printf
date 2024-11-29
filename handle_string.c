@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa_low.c                                   :+:      :+:    :+:   */
+/*   handle_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:06:05 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/28 18:48:00 by bde-koni         ###   ########.fr       */
+/*   Created: 2024/11/29 13:18:28 by bde-koni          #+#    #+#             */
+/*   Updated: 2024/11/29 13:59:17 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthexa_low(unsigned int x)
+size_t handle_string(char *s)
 {
-	if (x >= 16)
-		ft_puthexa_low(x / 16);
-	ft_putchar("0123456789abcdef"[x % 16]);
+	va_list args;
+	size_t	count;
+
+	count = 0;
+	s = va_arg(args, char *);
+	if (s == NULL)
+	{
+		ft_putstr("(null)");
+		count += 6;
+	}
+		else 
+	{	
+		ft_putstr(s);
+		count += ft_strlen(s);
+	}
+	return (count);
 }

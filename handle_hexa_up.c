@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa_low.c                                   :+:      :+:    :+:   */
+/*   handle_hexa_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:06:05 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/28 18:48:00 by bde-koni         ###   ########.fr       */
+/*   Created: 2024/11/29 14:17:36 by bde-koni          #+#    #+#             */
+/*   Updated: 2024/11/29 14:21:06 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthexa_low(unsigned int x)
+size_t	handle_hexa_up(unsigned int xx)
 {
-	if (x >= 16)
-		ft_puthexa_low(x / 16);
-	ft_putchar("0123456789abcdef"[x % 16]);
+	va_list args;
+	size_t	count;
+
+	count = 0;
+	xx = va_arg(args, unsigned int);
+	ft_puthexa_up(xx);
+	if (xx == 0)
+	count += 1;
+	else 
+		count += ft_hexalen(xx);
+	return (count);
 }

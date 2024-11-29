@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:20:42 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/28 18:17:03 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:42:20 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,21 @@ int	main(void)
 	// ft_printf("%s tussenstukje %X \n", s, xx);
 	// printf(" NULL %s NULL ", (char *)NULL);
 	// printf("%s tussenstukje %X \n", s, xx);
-	
+
 	// unsigned int xx = 555555555;
 	// printf("%d \n", printf("%d", xx));
 	// printf("%d \n", ft_printf("%d", xx));
-	
-	//void	*p = 0;
-	//printf(" %p %p ", p, p);
 
-	//int n = 0;
+	// void	*p = 0;
+	// printf(" %p %p ", p, p);
+
+	// int n = 0;
 	// printf(" %d ", 0);
 	// ft_printf(" %d ", 0);
 
-	ft_printf(" %u ", -1);
-	printf(" %u ", -1);
+	// ft_printf(" %u ", -1);
+	// printf(" %u ", -1);
+
+	printf("%k", 2);
 	return (0);
 }

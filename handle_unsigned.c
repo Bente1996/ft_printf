@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa_low.c                                   :+:      :+:    :+:   */
+/*   handle_unsigned.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:06:05 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/28 18:48:00 by bde-koni         ###   ########.fr       */
+/*   Created: 2024/11/29 14:08:50 by bde-koni          #+#    #+#             */
+/*   Updated: 2024/11/29 14:11:15 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthexa_low(unsigned int x)
+
+size_t	handle_unsigned(int u)
 {
-	if (x >= 16)
-		ft_puthexa_low(x / 16);
-	ft_putchar("0123456789abcdef"[x % 16]);
+	va_list args;
+	size_t	count;
+
+	count = 0;
+	u = va_arg(args, unsigned int);
+	ft_putnbr_unsigned(u);
+	if (u == 0)
+	count += 1;
+	else 
+		count += ft_lencheck((long)u);
+	return (count);
 }
