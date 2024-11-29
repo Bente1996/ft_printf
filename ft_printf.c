@@ -6,15 +6,11 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:02:21 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/29 14:23:52 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:58:07 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
 #include "ft_printf.h"
-#include <stdint.h>
-#include <aio.h>
 
 int	ft_printf(const char *print, ...)
 {
@@ -43,7 +39,7 @@ int	ft_printf(const char *print, ...)
 size_t	handle_print(char is_flag, va_list args) //keeps track of count and puts on output, takes a char and va _list argument
 {
 	if (is_flag == 'c')
-		return (handle_char(va_arg(args, char))); //function handles c and returns count
+		return (handle_char(va_arg(args, int))); //function handles c and returns count
 	else if (is_flag == 's')
 		return (handle_string(va_arg(args, char *))); //function handles s and returns count
 	else if (is_flag == 'p')
@@ -57,7 +53,7 @@ size_t	handle_print(char is_flag, va_list args) //keeps track of count and puts 
 	else if (is_flag == 'X')
 		return (handle_hexa_up(va_arg(args, unsigned int))); //function handles X and returns count
 	else if (is_flag == '%')
-		return (write(1, '%', 1)); //write handles % and returns 1
+		return (write(1, "%", 1)); //write handles % and returns 1
 	return (0); //no flag after %? return 0, QUESTION: does '%@' needs to be printed?
 }
 
@@ -72,4 +68,21 @@ size_t	ft_hexalen(uintptr_t x)
 		len++;
 	}
 	return (len);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 }

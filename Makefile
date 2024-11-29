@@ -3,15 +3,13 @@ NAME := libftprintf.a
 EXEC_NAME := ft_printf
 HEADERFILES := libft.h ft_printf.h
 SRCFILES := ft_printf.c \
-ft_putchar.c \
-ft_putstr.c \
-ft_putnbr_signed.c \
-ft_putnbr_unsigned.c \
-ft_putaddress.c \
-ft_puthexa_low.c \
-ft_puthexa_up.c \
-
-
+handle_char.c \
+handle_string.c \
+handle_pointer.c \
+handle_signed.c \
+handle_unsigned.c \
+handle_hexa_low.c \
+handle_hexa_up.c
 
 OBJFILES := $(SRCFILES:.c=.o)
 CFLAGS ?= -Wall -Wextra -Werror -ILibft/

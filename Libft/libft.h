@@ -6,7 +6,7 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:52:50 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/27 17:39:30 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:46:05 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include <aio.h>
 # include <stdlib.h>
 # include <unistd.h>
-//# include <stddef.h> 
-//# include <stdarg.h>
+# include <stddef.h> 
+# include <stdarg.h>
+# include <stdint.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

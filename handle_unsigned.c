@@ -6,14 +6,13 @@
 /*   By: bde-koni <bde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:08:50 by bde-koni          #+#    #+#             */
-/*   Updated: 2024/11/29 14:11:15 by bde-koni         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:37:11 by bde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-size_t	handle_unsigned(int u)
+size_t	handle_unsigned(unsigned int u)
 {
 	va_list args;
 	size_t	count;
@@ -26,4 +25,11 @@ size_t	handle_unsigned(int u)
 	else 
 		count += ft_lencheck((long)u);
 	return (count);
+}
+
+void	ft_putnbr_unsigned(unsigned int u)
+{
+	if (u >= 10)
+		ft_putnbr_unsigned(u / 10);
+	ft_putchar((u % 10) + '0');
 }
