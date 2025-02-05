@@ -1,4 +1,3 @@
-# NAME := libftprintf.a, eerst printf
 NAME := libftprintf.a
 EXEC_NAME := ft_printf
 HEADERFILES := libft.h ft_printf.h
@@ -14,6 +13,9 @@ handle_hexa_up.c
 OBJFILES := $(SRCFILES:.c=.o)
 CFLAGS ?= -Wall -Wextra -Werror -ILibft/
 LIBFT_A := Libft/libft.a
+# SRCDIRS = octal integer unsigned
+# SRCS = src $(addprefix src/,$(SRCDIRS))
+# VPATH = $(SRCS)
 
 all : $(NAME)
 
@@ -42,8 +44,10 @@ $(LIBFT_A):
 
 clean:
 	rm -f $(OBJFILES)
+	$(MAKE) -C Libft clean
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C Libft clean
 
 re: fclean all
 
